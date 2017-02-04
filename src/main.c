@@ -47,7 +47,7 @@ int main(void)
 }
 
 /**  
- *	 System Clock Configuration
+ *   System Clock Configuration
  *   The system Clock is configured as follows in MAIN.H : 
  *
  *            System Clock source            = PLL (HSE)
