@@ -25,7 +25,6 @@ int main(void)
 	Configure_SPI1();
 
 // Initiating accelerometer LIS3DSH
-
 	SPI_Tx(0x20U, 0x67U); // CTRL_REG4: output data rate = 100Hz, continuous update, x,y,z enable
 	SPI_Tx(0x24U, 0x48U); // CTRL_REG5: Anti-aliasing filter bandwidth=200Hz, full scale = 4g
 
