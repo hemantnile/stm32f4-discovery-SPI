@@ -5,8 +5,8 @@
  * @version V1
  * @date    04-Feb-2017
  * @brief   Simple implementation of accessing LIS3DSH accelerometer on STM32F4 
-						Discovery board using SPI interface. Four LEDs present on the board 
-						lit up when board is tilted in their direction.
+	    Discovery board using SPI interface. Four LEDs present on the board 
+	    lit up when board is tilted in their direction.
  
  ******************************************************************************
  */
@@ -112,9 +112,9 @@ static void Configure_LEDS(void)
 {
 	CLK_ENABLE(RCC->AHB1ENR, RCC_AHB1ENR_GPIODEN);
 	MODIFY_REG(GPIOD->MODER, (uint32_t) 0xFF000000U, (uint32_t) 0x55000000U); // pins 12,13,14,15 as output
-	MODIFY_REG(GPIOD->OTYPER, (uint32_t) 0xFF000000U, (uint32_t) 0x00000000U); //	GPIOD->OTYPER - PUSH PULL 
-	MODIFY_REG(GPIOD->OSPEEDR, (uint32_t) 0xFF000000U, (uint32_t) 0xFF000000U);	// pins 12,13,14,15 very high speed 
-	MODIFY_REG(GPIOD->PUPDR, (uint32_t) 0xFF000000U, (uint32_t) 0x00000000U);	//	GPIOD->PUPDR - NO PULL
+	MODIFY_REG(GPIOD->OTYPER, (uint32_t) 0xFF000000U, (uint32_t) 0x00000000U); // GPIOD->OTYPER - PUSH PULL 
+	MODIFY_REG(GPIOD->OSPEEDR, (uint32_t) 0xFF000000U, (uint32_t) 0xFF000000U); // pins 12,13,14,15 very high speed 
+	MODIFY_REG(GPIOD->PUPDR, (uint32_t) 0xFF000000U, (uint32_t) 0x00000000U); // GPIOD->PUPDR - NO PULL
 }
 
 static void Configure_SPI1(void)
