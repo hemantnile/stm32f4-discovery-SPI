@@ -25,7 +25,6 @@ int main(void)
 	Configure_SPI1();
 
 // Initiating accelerometer LIS3DSH
-
 	SPI_Tx(0x20U, 0x67U); // CTRL_REG4: output data rate = 100Hz, continuous update, x,y,z enable
 	SPI_Tx(0x24U, 0x48U); // CTRL_REG5: Anti-aliasing filter bandwidth=200Hz, full scale = 4g
 
@@ -47,8 +46,7 @@ int main(void)
 	}
 }
 
-/**
- *   System Clock Configuration
+/**  System Clock Configuration
  *   The system Clock is configured as follows in MAIN.H : 
  *
  *            System Clock source            = PLL (HSE)
@@ -84,17 +82,17 @@ void SystemInit(void)
 	CLK_ENABLE(RCC->APB1ENR, RCC_APB1ENR_PWREN);
 	SET_BIT(PWR->CR, PWR_CR_VOS);
 
-// flash latency, prefech, instruction cache , data cache
+// Flash latency, prefech, instruction cache , data cache
 	MODIFY_REG(FLASH->ACR, FLASH_ACR_LATENCY, FLASH_ACR_LATENCY_5WS);
 	SET_BIT(FLASH->ACR, FLASH_ACR_PRFTEN | FLASH_ACR_ICEN | FLASH_ACR_DCEN);
 
-//enable HSE and wait for it	
+// Enable HSE and wait for it	
 	SET_BIT(RCC->CR, RCC_CR_HSEON);
 	while (READ_BIT(RCC->CR, RCC_CR_HSERDY) != RCC_CR_HSERDY)
 	{
 	}
 	WRITE_REG(RCC->PLLCFGR, RCC_PLLCFGR_PLLSRC_HSE | PLL_M | PLL_N << 6 | ((PLL_P >> 1U) - 1U) << 16 | PLL_Q << 24);
-//enable pll and wait for it	
+// Enable PLL and wait for it	
 	SET_BIT(RCC->CR, RCC_CR_PLLON);
 	while (READ_BIT(RCC->CR, RCC_CR_PLLRDY) != RCC_CR_PLLRDY)
 	{
@@ -104,7 +102,7 @@ void SystemInit(void)
 	while (READ_BIT(RCC->CFGR, RCC_CFGR_SWS) != RCC_CFGR_SWS_PLL)
 	{
 	}
-//disable HSI	
+// Disable HSI	
 	CLEAR_BIT(RCC->CR, RCC_CR_HSION);
 }
 
