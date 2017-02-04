@@ -20,7 +20,7 @@ int main(void)
 {
 	int8_t x, y, z;
 
-// Configure flash and the system clock to 168 MHz
+// Configure peripherals
 	Configure_LEDS();
 	Configure_SPI1();
 
